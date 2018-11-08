@@ -12,3 +12,15 @@ pass_destination_heat_map <- function(pass_event_data) {
     geom_point(colour = "red")
     }
   
+top_pass_xG_gain_passers <- function(pass_data_input) {
+  ggplot(pass_data_input, aes(x=reorder(player_name, total_pass_xG_gain), y=total_pass_xG_gain, fill=team_name)) +
+    geom_col() +
+    labs(y = "Total Pass xG Gain", x = "", title = "Top Passers by xG Gain - 2018 World Cup",  fill = "Country") +
+    coord_flip()
+}
+
+
+
+top_pass_xG_gain_passers(head(rank_top_xG_gain_passers(filter(pass_SQL_query(), pass_outcome == "Complete", pass_xG_gain > 0, !(pass_type %in% c("Corner", "Free Kick", "Goal Kick", "Kick Off", "Throw-In")))), n=10))
+
+

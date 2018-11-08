@@ -17,4 +17,3 @@ rank_top_xG_gain_passers <- function(pass_data_input){
     arrange(desc(total_pass_xG_gain))
 }
 
-head(rank_top_xG_gain_passers(filter(pass_SQL_query(), pass_outcome == "Complete")))
