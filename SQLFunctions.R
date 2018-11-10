@@ -24,7 +24,9 @@ pass_SQL_query <- function(){
   result <- event_SQL_query(pass_query)
 }
 
-
+all_SQL_query <- function(){
+  result <- event_SQL_query("select * from event")
+}
 
 teams_SQL_query <- function(){
   db <- dbConnect(SQLite(), dbname="~/sqlite/statsBombData.db")

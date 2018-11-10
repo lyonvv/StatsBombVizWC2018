@@ -17,3 +17,17 @@ rank_top_xG_gain_passers <- function(pass_data_input){
     arrange(desc(total_pass_xG_gain))
 }
 
+pass_with_destination <- function() {
+  origin <- pass_SQL_query()
+  origin$pass_part <- "Origin"
+  origin <- select(origin, -pass_end_xlocation, -pass_end_ylocation)
+  destination <- pass_SQL_query()
+  destination$pass_part <- "Destination"
+  destination <- select(destination, -xlocation, -ylocation)
+  destination <- rename(destination, xlocation = pass_end_xlocation, ylocation = pass_end_ylocation)
+  result <- rbind(origin, destination)
+}
+
+
+
+
